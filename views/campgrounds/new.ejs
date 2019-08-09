@@ -1,0 +1,13 @@
+<%include ../partials/header%>
+<h1 class="text-center mt-5">Create a new campground</h1>
+<form action="/campgrounds" method="post" class="form-group my-4" style="width:80%;margin:0 auto;" autocomplete="off">
+    <label for="campgroundName">Name of the campground:</label>
+    <input class="form-control mb-3" type="text" name="name" id="campgroundName" placeholder="name" required>
+    <label for="campgroundImage">Image</label>
+    <input class="form-control mb-3" type="text" name="image" id="campgroundImage" placeholder="image-url" required>
+    <label for="campgroundDesc">Description</label>
+    <input class="form-control" type="text" name="desc" id="campgroundDesc" placeholder="Describe the place briefly..." required>
+    <button class="btn btn-primary my-3 btn-block" type="submit">Submit</button>
+    <a href="/campgrounds">Go Back</a>
+</form>
+<%include ../partials/footer%>

@@ -1,0 +1,11 @@
+<%include ../partials/header%>
+<h3 class="text-center mt-5">Add new comment to <%=campground.name%></h3>
+<form action="/campgrounds/<%=campground._id%>/comments" method="POST" class="form-group my-4" style="width:80%;margin:0 auto;" autocomplete="off">
+    <label for="commentText">Comment: </label>
+    <input class="form-control mb-3" type="text" name="comment[text]" id="commentText" placeholder="Share your experience..." required>
+    <label for="campgroundImage">Your name:</label>
+    <input class="form-control mb-3" type="text" name="comment[author]" id="author" placeholder="eg. basya" required>
+    <button class="btn btn-primary my-3 btn-block" type="submit">Submit</button>
+    <a href="/campgrounds">Go Back</a>
+</form>
+<%include ../partials/footer%>

@@ -1,0 +1,20 @@
+<%include ../partials/header%>
+
+<header class="jumbotron">
+    <h1>Welcome to Camp-vas</h1>
+    <p>View our handpicked campgrounds from all over the world</p>    
+    <a href="/campgrounds/new" class="btn btn-primary btn-large">Add new campground</a>
+</header>
+<div class="row text-center justify-content-between d-" style="display:flex; flex-wrap:wrap;">
+    <% campgrounds.forEach(campground => { %>
+        <div class="card m-2" style="width: 18rem;">
+        <img class="card-img-top" src="<%= campground.image %>" alt="Card image cap" height="200">
+        <div class="card-body">
+            <h5 class="card-title"><%=campground.name%></h5>
+            <a href="/campgrounds/<%=campground._id%>" class="btn btn-primary btn-block">more info</a>
+        </div>
+        </div>
+    <%}); %>    
+</div>
+
+<%include ../partials/footer%>
