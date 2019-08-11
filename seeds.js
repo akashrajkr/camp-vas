@@ -27,10 +27,11 @@ const data = [
 
 
 function seedDB() {
+    console.log('Removing everything from the database!');
     Campground.deleteMany({}, (err) => {
         if(err)
             console.log(err);
-        console.log('Removed Campgrounds!');
+        console.log('Removed everything from the database!');
         data.forEach(seed => {
             Campground.create(seed, (err, data) => {
                 if(err)
