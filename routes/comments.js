@@ -26,12 +26,17 @@ router.post('/',isLoggedIn, (req, res) => {
             Comment.create(req.body.comment, (err, comment) => {
                 if(err) 
                     console.log(err);
-                else
+                else{
+                    // Add username and id to each comment
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
+                    // save comment
+                    comment.save();
                     campground.comments.push(comment);
                     campground.save();
                     res.redirect('/campgrounds/'+campground._id);
+                }
             })
-            
         }
     })
 })

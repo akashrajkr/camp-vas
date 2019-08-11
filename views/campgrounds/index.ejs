@@ -5,7 +5,7 @@
     <p>View our handpicked campgrounds from all over the world</p>    
     <a href="/campgrounds/new" class="btn btn-primary btn-large">Add new campground</a>
 </header>
-<div class="row text-center justify-content-between d-" style="display:flex; flex-wrap:wrap;">
+<div class="row text-center justify-content-around" style="display:flex; flex-wrap:wrap;">
     <% campgrounds.forEach(campground => { %>
         <div class="card m-2" style="width: 18rem;">
         <img class="card-img-top" src="<%= campground.image %>" alt="Card image cap" height="200">

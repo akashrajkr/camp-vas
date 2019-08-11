@@ -10,11 +10,12 @@
             </div>
         </div>
         <div class="col-lg-8">
-            <div class="thumbnail row justify-content-center mb-5 rounded border">
+            <div class="thumbnail row mb-5 rounded border">
                 <img src="<%=campground.image%>" alt="<%=campground.image%>" class="img-fluid image rounded  mb-4">
-                <div class="caption-full p-4">
-                    <h3><a href="#"><%=campground.name%></a><span><h4 class="float-right align-self">$9.00/night</h4></span></h3>
+                <div class="caption-full p-4 w-100">
+                    <h3><a href="#"><%=campground.name%></a><span><h4 class="float-right">$9.00/night</h4></span></h3>
                     <p><%=campground.description%></p>
+                    <em><p class="w-100" style="text-align: right;"> - <%=campground.author.username%></p></em>
                 </div>
             </div>
             </div>
@@ -26,7 +27,7 @@
                     <% campground.comments.forEach(comment => { %>
                         <div class="comment row border border-0 mb-2 pt-3 rounded">
                             <div class="col-md-12">
-                                <strong><%=comment.author%></strong>
+                                <strong><%=comment.author.username%></strong>
                                 <span class="float-right badge badge-pill badge-primary m-2">10 days ago</span>
                                 <p>
                                     <%=comment.text%>
