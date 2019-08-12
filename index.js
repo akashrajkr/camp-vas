@@ -15,7 +15,7 @@ const express = require('express'),
 
 mongoose.connect('mongodb://localhost/camp_vas', { useNewUrlParser: 
 true });
-
+mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + '/public'));

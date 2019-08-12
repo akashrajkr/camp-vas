@@ -17,6 +17,9 @@
                     <p><%=campground.description%></p>
                     <em><p class="w-100" style="text-align: right;"> - <%=campground.author.username%></p></em>
                     <a class="btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
+                    <form id="deleteForm"method="post" action="/campgrounds/<%=campground._id%>?_method=DELETE">
+                        <button type="submit" class="btn btn-danger ">Delete campground</button>
+                    </form>
                 </div>
             </div>
             </div>

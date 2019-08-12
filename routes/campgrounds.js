@@ -76,7 +76,13 @@ router.put('/:id', (req, res) => {
 });
 // Destroy campground route
 router.delete('/:id', (req,res) => {
-    res.send('You are trying to delete something');
+    Campground.findByIdAndRemove(req.params.id, (err, campground) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.redirect('/campgrounds')
+        }
+    })
 })
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){
