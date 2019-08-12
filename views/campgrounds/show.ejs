@@ -16,9 +16,11 @@
                     <h3><a href="#"><%=campground.name%></a><span><h4 class="float-right">$9.00/night</h4></span></h3>
                     <p><%=campground.description%></p>
                     <em><p class="w-100" style="text-align: right;"> - <%=campground.author.username%></p></em>
+                    <%if(currentUser && campground.author.id.equals(currentUser._id)){%>
                     <a class="btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
                     <form id="deleteForm"method="post" action="/campgrounds/<%=campground._id%>?_method=DELETE">
                         <button type="submit" class="btn btn-danger ">Delete campground</button>
+                    <%}%>
                     </form>
                 </div>
             </div>

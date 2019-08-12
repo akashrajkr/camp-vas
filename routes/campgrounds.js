@@ -52,16 +52,11 @@ router.post('/',isLoggedIn, (req, res) => {
 })
 
 // Edit campground route
-router.get('/:id/edit',(req, res) => {
-    Campground.findById(req.params.id, (err,campground) => {
-        if(err) {
-            res.redirect('/campgrounds');
-        } else {
+router.get('/:id/edit',checkOwnership, (req, res) => {
+        Campground.findById(req.params.id, (err, campground) => {
             res.render('campgrounds/edit', {campground});
-        }
-    })
+     })
 });
-
 router.put('/:id', (req, res) => {
     // Find and update a correct campground
 
@@ -84,6 +79,29 @@ router.delete('/:id', (req,res) => {
         }
     })
 })
+
+// Middlewares
+// Check campground ownership
+function checkOwnership(req, res, next) {
+    if(req.isAuthenticated()){
+        Campground.findById(req.params.id, (err, campground) => {
+            if(err) {
+                console.log(err);
+                res.redirect('back')
+            } else {
+                // the "campground" returned by mongoose is not in string format but a mongoose object so we cant just compare like (campground.author.id === req.user._id) because req.user._id is a string
+                // So we use the function provided by mongoose
+                if(campground.author.id.equals(req.user._id)){
+                    next();
+                } else {
+                    res.redirect('back')
+                }
+            }
+        })
+    } else {
+        res.redirect("back");
+    }
+}
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){
         return next();
