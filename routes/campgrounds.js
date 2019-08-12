@@ -50,6 +50,34 @@ router.post('/',isLoggedIn, (req, res) => {
         })
     res.redirect('/campgrounds')
 })
+
+// Edit campground route
+router.get('/:id/edit',(req, res) => {
+    Campground.findById(req.params.id, (err,campground) => {
+        if(err) {
+            res.redirect('/campgrounds');
+        } else {
+            res.render('campgrounds/edit', {campground});
+        }
+    })
+});
+
+router.put('/:id', (req, res) => {
+    // Find and update a correct campground
+
+    Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground) => {
+        if(err) {
+            res.redirect('/campgrounds');
+        } else {
+            res.redirect('/campgrounds/' + req.params.id);
+        }
+    })
+    // redirect somewhere
+});
+// Destroy campground route
+router.delete('/:id', (req,res) => {
+    res.send('You are trying to delete something');
+})
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){
         return next();

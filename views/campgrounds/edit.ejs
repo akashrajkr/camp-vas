@@ -1,0 +1,14 @@
+<%include ../partials/header%>
+<h1 class="text-center mt-5">Edit campground</h1>
+<h4 class="text-center mt-3"><%=campground.name%></h4>
+<form action="/campgrounds/<%=campground._id%>?_method=PUT" method="post" class="form-group my-4" style="width:80%;margin:0 auto;" autocomplete="off">
+    <label for="campgroundName">Name of the campground:</label>
+    <input class="form-control mb-3" type="text" name="campground[name]" id="campgroundName" placeholder="name" value="<%=campground.name%>">
+    <label for="campgroundImage">Image</label>
+    <input class="form-control mb-3" type="text" name="campground[image]" id="campgroundImage" placeholder="image-url" value="<%=campground.image%>">
+    <label for="campgroundDesc">Description</label>
+    <textarea rows="6" cols="" class="form-control" name="campground[description]" id="campgroundDesc"><%=campground.description%></textarea> 
+    <button class="btn btn-primary my-3 btn-block" type="submit">Submit</button>
+    <a href="/campgrounds">Go Back</a>
+</form>
+<%include ../partials/footer%>
