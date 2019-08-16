@@ -1,7 +1,39 @@
-<% include partials/header %>
-<h1>The Landing Page</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Camp-vas</title>
+        <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+        <link rel="stylesheet" href="stylesheets/landing.css">
+        <script src="/js/modernizr.min.js" type="text/javascript" async></script>
+        <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    
+    <div id="landing-header">
+ 		<h1 class="display-2">Camp-vas</h1>
+         <p id="caption">Enjoy your holiday in the lap of nature</p>
+		<a href="/campgrounds" class="btn btn-lg btn-light mt-5">View All Campgrounds</a>
+    </div>
+    
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
 
-<p>Welcome to Camp-vas</p>
-
-<a href="/campgrounds">View all campgrounds</a>
 <% include partials/footer %>
