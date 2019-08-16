@@ -11,6 +11,7 @@ const express = require('express'),
       commentRoutes = require('./routes/comments'),
       campgroundRoutes = require('./routes/campgrounds'),
       indexRoutes = require('./routes/index'),
+      flash = require('connect-flash'),
       methodOverride = require('method-override');
 
 mongoose.connect('mongodb://localhost/camp_vas', { useNewUrlParser: 
