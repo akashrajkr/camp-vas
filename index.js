@@ -24,6 +24,8 @@ app.set('view engine', 'ejs');
 app.use(methodOverride("_method"));
 // seedDB(); //Seed the database
 
+app.use(flash());
+
 // PASSPORT CONFIGURATION
 app.use(require('express-session')({
     secret: 'Akash is the coolest!',
