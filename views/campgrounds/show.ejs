@@ -13,7 +13,7 @@
             <div class="thumbnail row mb-5 rounded border">
                 <img src="<%=campground.image%>" alt="<%=campground.image%>" class="img-fluid image rounded  mb-4">
                 <div class="caption-full p-4 w-100">
-                    <h3><a href="#"><%=campground.name%></a><span><h4 class="float-right">$9.00/night</h4></span></h3>
+                    <h3><a href="#"><%=campground.name%></a><span><h4 class="float-right">&#8377; <%=campground.price%>/night</h4></span></h3>
                     <p><%=campground.description%></p>
                     <em><p class="w-100" style="text-align: right;"> - <%=campground.author.username%></p></em>
                     <%if(currentUser && campground.author.id.equals(currentUser._id)){%>

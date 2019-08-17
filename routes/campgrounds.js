@@ -36,12 +36,13 @@ router.post('/',middleware.isLoggedIn, (req, res) => {
     //redirect back to campgrounds page
     const name = req.body.name;
     const image = req.body.image;
+    const price = req.body.price;
     const description = req.body.desc;
     const author = {
         id :req.user._id,
         username: req.user.username
     }
-    const newCampground = {name, image, description, author};
+    const newCampground = {name, image, description, author, price};
     Campground.create(newCampground)
         .then(item => {
             console.log(item.name, 'Added successfully.');
@@ -71,11 +72,12 @@ router.put('/:id', middleware.checkCampgroundOwnership, (req, res) => {
     // redirect somewhere
 });
 // Destroy campground route
-router.delete('/:id', middleware.checkCommentOwnership, (req,res) => {
+router.delete('/:id', middleware.checkCampgroundOwnership, (req,res) => {
     Campground.findByIdAndRemove(req.params.id, (err, campground) => {
         if(err) {
-            console.log(err)
+            req.flash('error', err.message)
         } else {
+            req.flash('success', 'Successfully deleted!')
             res.redirect('/campgrounds')
         }
     })
